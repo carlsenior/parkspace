@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:park_space/globals/utils/convert_px_to_dp.dart';
+import 'package:park_space/screens/onboard/pages/Page2.dart';
+
+import 'pages/page1.dart';
 
 class OnBoardScreen extends StatefulWidget {
   const OnBoardScreen({Key? key}) : super(key: key);
@@ -8,94 +12,97 @@ class OnBoardScreen extends StatefulWidget {
 }
 
 class _OnBoardScreenState extends State<OnBoardScreen> {
-  int _currentImgIndex = 0;
-  final onBoardScreenImages = [
-    "assets/images/onboard/Onboaring.png",
-    "assets/images/onboard/Onboaring-1.png",
-  ];
+  late PageController _controller;
 
-  void nextImage() {
-    if (_currentImgIndex < onBoardScreenImages.length - 1) {
-      setState(() {
-        _currentImgIndex += 1;
-      });
-    }
+  int _active_page = 0;
+  List<Widget> pages = [const Page1(), const Page2()];
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = PageController(initialPage: 0);
   }
 
-  void prevImage() {
-    if (_currentImgIndex > 0) {
-      setState(() {
-        _currentImgIndex -= 1;
-      });
-    }
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          color: Colors.white,
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: [
-              AnimatedSwitcher(
-                duration: const Duration(milliseconds: 800),
-                switchInCurve: Curves.easeInOut,
-                transitionBuilder: (child, animation) => ScaleTransition(
-                  scale: animation,
-                  child: child,
-                ),
-                child: Image.asset(
-                  onBoardScreenImages[_currentImgIndex],
-                  height: MediaQuery.of(context).size.height * 0.8,
-                  width: double.infinity,
-                  key: ValueKey<int>(_currentImgIndex),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Container(
-                color: Colors.black26,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                        onPressed: prevImage,
-                        icon: _currentImgIndex == 0
-                            ? const Icon(null)
-                            : const Icon(Icons.arrow_back)),
-                    TextButton(
-                        onPressed: () => {},
-                        child: Text(
-                          'Skip',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.copyWith(
-                                  color: Colors.red,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Roboto',
-                                  fontFamilyFallback: <String>[
-                                'Noto Sans CJK SC',
-                                'Noto Color Emoji',
-                              ]),
-                        )),
-                    IconButton(
-                        onPressed:
-                            _currentImgIndex == onBoardScreenImages.length - 1
-                                ? () => {}
-                                : nextImage,
-                        icon: _currentImgIndex == onBoardScreenImages.length - 1
-                            ? const Icon(Icons.done)
-                            : const Icon(Icons.arrow_forward))
-                  ],
-                ),
-              )
-            ],
+      body: Stack(
+        children: [
+          PageView.builder(
+              itemCount: pages.length,
+              controller: _controller,
+              onPageChanged: (value) {
+                setState(() {
+                  _active_page = value;
+                });
+              },
+              itemBuilder: (context, index) {
+                return pages[index];
+              }),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            height: 100,
+            child: Container(
+              color: Colors.black54,
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List<Widget>.generate(
+                    pages.length,
+                    (index) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: InkWell(
+                          onTap: () {
+                            _controller.animateToPage(index,
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeIn);
+                          },
+                          child: _active_page == index
+                              ? const Icon(
+                                  Icons.circle,
+                                  color: Colors.white,
+                                  size: 12,
+                                )
+                              : const Icon(
+                                  Icons.radio_button_unchecked,
+                                  color: Colors.white,
+                                  size: 12,
+                                )),
+                    ),
+                  )),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
 }
+
+// class CirclePainter extends CustomPainter {
+//   CirclePainter({required this.shouldFill}) {
+//     _paint
+//       ..color = Colors.white
+//       ..style = shouldFill ? PaintingStyle.fill : PaintingStyle.stroke
+//       ..strokeWidth = shouldFill ? 0 : 1;
+//   }
+
+//   bool shouldFill;
+//   final Paint _paint = Paint();
+
+//   @override
+//   void paint(Canvas canvas, Size size) {
+//     canvas.drawOval(Rect.fromLTWH(0, 0, size.width, size.height), _paint);
+//   }
+
+//   @override
+//   bool shouldRepaint(covariant CirclePainter oldDelegate) {
+//     return oldDelegate.shouldFill != shouldFill;
+//   }
+// }

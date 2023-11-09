@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../../utils/convert_px_to_dp.dart';
+
 class AppTheme {
-  AppTheme({required this.context}) {
-    pixelRatio = MediaQuery.of(context).devicePixelRatio;
-  }
-  BuildContext context;
+  AppTheme();
   double pixelRatio = 0.0;
 
 // ignore: non_constant_identifier_names
   Color custom_yellow = HexColor('#FFD600');
-
-  double _convertPX2DP(int px) {
-    return px / pixelRatio;
-  }
 
   ThemeData appThemeData() {
     final ThemeData base = ThemeData.light(useMaterial3: true);
@@ -32,7 +27,7 @@ class AppTheme {
         // Title
         headlineMedium: base.headlineMedium!.copyWith(
             fontFamily: 'Poppins',
-            fontSize: _convertPX2DP(28), // 28px
+            fontSize: 28, // 28px
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.w500,
             height: 1.42875,
@@ -40,7 +35,7 @@ class AppTheme {
         // Header style, Section Title style
         titleSmall: base.titleSmall!.copyWith(
             fontFamily: 'Outfit',
-            fontSize: _convertPX2DP(16),
+            fontSize: 16,
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.w500,
             height: 1,
@@ -48,7 +43,7 @@ class AppTheme {
         // SubTitle style, SubText style
         labelMedium: base.labelMedium!.copyWith(
             fontFamily: 'Outfit',
-            fontSize: _convertPX2DP(14),
+            fontSize: 14,
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.w400,
             height: 1,
@@ -65,6 +60,5 @@ class AppTheme {
                   MaterialStateProperty.all<Color>(HexColor('##F9F9F9')),
               shape: MaterialStateProperty.all<OutlinedBorder>(
                   RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(_convertPX2DP(12))))));
+                      borderRadius: BorderRadius.circular(12)))));
 }
