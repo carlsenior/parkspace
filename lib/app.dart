@@ -1,10 +1,11 @@
+import 'package:ParkSpace/globals/settings/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:parker/globals/providers/app_state_provider.dart';
-import 'package:parker/globals/settings/router/app_router.dart';
-import 'package:parker/globals/settings/theme/app_theme.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'globals/providers/app_state_provider.dart';
+import 'globals/settings/router/app_router.dart';
 
 class App extends StatefulWidget {
   const App({Key? key, required this.prefs}) : super(key: key);
@@ -18,6 +19,7 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
+    AppTheme appTheme = AppTheme(context: context);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => AppStateProvider()),
@@ -30,7 +32,7 @@ class _AppState extends State<App> {
           GoRouter router = Provider.of<AppRouter>(context).router;
           return MaterialApp.router(
             routerConfig: router,
-            theme: appThemeData,
+            theme: appTheme.appThemeData(),
           );
         },
       ),

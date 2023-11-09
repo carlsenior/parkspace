@@ -2,6 +2,6 @@
 
 ---
 
-- :telescope Easy, anywhere, in the palm of your hands.
+- :telescope: Easy, anywhere, in the palm of your hands.
 
 

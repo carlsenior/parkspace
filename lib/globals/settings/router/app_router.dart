@@ -1,10 +1,11 @@
 import 'package:go_router/go_router.dart';
-import 'package:parker/globals/constants/constants.dart';
-import 'package:parker/globals/providers/app_state_provider.dart';
-import 'package:parker/globals/settings/router/router_util.dart';
-import 'package:parker/screens/home/home_screen.dart';
-import 'package:parker/screens/onboard/onboard_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../screens/home/home_screen.dart';
+import '../../../screens/onboard/onboard_screen.dart';
+import '../../constants/constants.dart';
+import '../../providers/app_state_provider.dart';
+import 'router_util.dart';
 
 class AppRouter {
   AppRouter({required this.appStateProvider});
