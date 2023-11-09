@@ -9,7 +9,9 @@ class Helper {
 
   void setStatusbarColor(Color c, {bool dark = false}) {
     SystemChrome.setSystemUIOverlayStyle(dark
-        ? SystemUiOverlayStyle.dark.copyWith(statusBarColor: c)
-        : SystemUiOverlayStyle.light.copyWith(statusBarColor: c));
+        ? SystemUiOverlayStyle.dark
+            .copyWith(statusBarColor: c, systemNavigationBarColor: c)
+        : SystemUiOverlayStyle.light
+            .copyWith(statusBarColor: c, systemNavigationBarColor: c));
   }
 }

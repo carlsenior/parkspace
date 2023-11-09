@@ -9,12 +9,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
 
-  // Hide navigation bar - Full screen mode
+  // Full screen mode
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
       overlays: [SystemUiOverlay.top]);
-
   Helper helper = Helper();
   helper.setStatusbarColor(Colors.transparent);
 
+  // run app
   runApp(App(prefs: prefs));
 }
