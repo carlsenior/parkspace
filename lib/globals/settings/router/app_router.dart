@@ -27,7 +27,7 @@ class AppRouter {
         redirect: (context, state) async {
           String onboardPath = state.namedLocation(APP_PAGE.onboard.routeName);
           SharedPreferences prefs = await SharedPreferences.getInstance();
-          bool? isOnBoarded = prefs.getBool(CONSTANTS.onboarded.name);
+          bool? isOnBoarded = prefs.getBool(CONSTANTS().onboarded);
           if (isOnBoarded == null || !isOnBoarded) {
             return onboardPath;
           }

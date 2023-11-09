@@ -8,7 +8,7 @@ class AppStateProvider extends ChangeNotifier {
 
   void hasOnBoard() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(CONSTANTS.onboarded.name, true);
+    await prefs.setBool(CONSTANTS().onboarded, true);
     notifyListeners();
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:park_space/components/filled_image.dart';
+import 'package:park_space/components/svg_render.dart';
+import 'package:park_space/globals/constants/constants.dart';
 
 class Page2 extends StatelessWidget {
   const Page2({Key? key}) : super(key: key);
@@ -28,6 +30,29 @@ class Page2 extends StatelessWidget {
               colors: [HexColor('#009ECD'), HexColor('#7DCED1')])),
       child: Stack(
         children: [
+          const Positioned(
+              left: 33,
+              top: 33,
+              width: 127,
+              height: 178,
+              child: SvgRender(
+                  svgURL:
+                      'assets/images/onboard/page2/Group_238585_onboard_page2.svg')),
+          const Positioned(
+              right: -80,
+              top: -20,
+              width: 358,
+              height: 372,
+              child: SvgRender(
+                  svgURL:
+                      'assets/images/onboard/page2/big_logo_4_onboard_page2.svg')),
+          const Positioned(
+              left: -20,
+              bottom: 0,
+              width: 220,
+              height: 220,
+              child:
+                  SvgRender(svgURL: 'assets/images/onboard/page2/logo_1.svg')),
           Positioned(
             right: -2,
             top: initStrokeRectTop,
@@ -74,8 +99,52 @@ class Page2 extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8.0),
                 child: const FilledImage(
                     imageURL:
-                        'assets/images/onboard/240_F_627349647_onboard.jpg'),
+                        'assets/images/onboard/page2/staff_onboard_page2.jpg'),
               )),
+          Positioned(
+              right: -8,
+              top: initStrokeRectTop -
+                  strokeHeightGap * 4 +
+                  strokeRectHeight -
+                  96 -
+                  8,
+              width: strokeRectWidth - 16,
+              height: 96,
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Container(
+                    color: Colors.white,
+                    padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: RichText(
+                              text: TextSpan(
+                                  text: CONSTANTS().easyString[0],
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                  children: <TextSpan>[
+                                TextSpan(
+                                    text: CONSTANTS().easyString[1],
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium),
+                                TextSpan(
+                                    text: CONSTANTS().easyString[2],
+                                    style:
+                                        Theme.of(context).textTheme.titleLarge)
+                              ])),
+                        ),
+                        const SizedBox(
+                          width: 32.0,
+                        ),
+                        const LimitedBox(
+                            maxWidth: 42,
+                            child: SvgRender(
+                                svgURL:
+                                    'assets/images/onboard/page2/logo_3.svg'))
+                      ],
+                    ),
+                  )))
         ],
       ),
     );

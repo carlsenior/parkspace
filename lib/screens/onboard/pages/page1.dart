@@ -7,8 +7,8 @@ class Page1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child:
-          FilledImage(imageURL: 'assets/images/onboard/image_29_onboard.jpg'),
+      child: FilledImage(
+          imageURL: 'assets/images/onboard/page1/image_29_onboard.jpg'),
     );
   }
 }

@@ -40,6 +40,7 @@ dependencies:
   provider: ^6.0.5
   hexcolor: ^3.0.1
   smooth_page_indicator: ^1.1.0
+  flutter_svg: ^2.0.9
 
 dev_dependencies:
   flutter_test:
@@ -65,8 +66,13 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/onboard/image_29_onboard.jpg
-    - assets/images/onboard/240_F_627349647_onboard.jpg
+    - assets/images/onboard/page1/image_29_onboard.jpg
+    - assets/images/onboard/page2/staff_onboard_page2.jpg
+    - assets/images/onboard/page2/logo_1.svg
+    - assets/images/onboard/page2/logo_2.svg
+    - assets/images/onboard/page2/logo_3.svg
+    - assets/images/onboard/page2/big_logo_4_onboard_page2.svg
+    - assets/images/onboard/page2/Group_238585_onboard_page2.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

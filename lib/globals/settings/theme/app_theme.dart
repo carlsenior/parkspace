@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-import '../../utils/helper.dart';
-
 class AppTheme {
   AppTheme();
   double pixelRatio = 0.0;
@@ -30,15 +28,29 @@ class AppTheme {
             fontSize: 28, // 28px
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.w500,
-            height: 1.42875,
+            height: 2.5,
             color: Colors.black),
         // Header style, Section Title style
+        titleLarge: base.titleLarge!.copyWith(
+            fontFamily: 'Outfit',
+            fontSize: 17,
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.w700,
+            height: 1.5,
+            color: HexColor('#009ACA')),
+        titleMedium: base.titleMedium!.copyWith(
+            fontFamily: 'Outfit',
+            fontSize: 17,
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.w400,
+            height: 1.5,
+            color: HexColor('#009ACA')),
         titleSmall: base.titleSmall!.copyWith(
             fontFamily: 'Outfit',
             fontSize: 16,
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.w500,
-            height: 1,
+            height: 1.5,
             color: HexColor('#323232')),
         // SubTitle style, SubText style
         labelMedium: base.labelMedium!.copyWith(
@@ -46,7 +58,7 @@ class AppTheme {
             fontSize: 14,
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.w400,
-            height: 1,
+            height: 1.5,
             color: HexColor('#7E7E7E')),
       );
 
