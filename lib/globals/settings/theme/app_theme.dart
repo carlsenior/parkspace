@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-import '../../utils/convert_px_to_dp.dart';
+import '../../utils/helper.dart';
 
 class AppTheme {
   AppTheme();
