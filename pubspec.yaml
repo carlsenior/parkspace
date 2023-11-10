@@ -30,17 +30,25 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  flutter_localizations: 
+    sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   shared_preferences: ^2.2.2
-  go_router: ^12.1.0
   provider: ^6.0.5
   hexcolor: ^3.0.1
   smooth_page_indicator: ^1.1.0
   flutter_svg: ^2.0.9
+  blur: ^3.1.0
+  flutter_screenutil: ^5.9.0
+  dotted_border: ^2.1.0
+  flutter_svg_provider: ^1.0.3
+  intl: ^0.18.0
+  table_calendar: ^3.0.6
+  flutter_rating_bar: ^4.0.0
+  cached_network_image: ^3.2.1
 
 dev_dependencies:
   flutter_test:
@@ -66,13 +74,14 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/onboard/page1/image_29_onboard.jpg
-    - assets/images/onboard/page2/staff_onboard_page2.jpg
-    - assets/images/onboard/page2/logo_1.svg
-    - assets/images/onboard/page2/logo_2.svg
-    - assets/images/onboard/page2/logo_3.svg
-    - assets/images/onboard/page2/big_logo_4_onboard_page2.svg
-    - assets/images/onboard/page2/Group_238585_onboard_page2.svg
+    - assets/
+    - assets/images/
+    - assets/images/tmp/
+    - assets/images/tmp/onboard/
+    - assets/images/tmp/onboard/page1/
+    - assets/images/tmp/onboard/page2/
+    - assets/images/tmp/onboard/page3/
+   
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -85,17 +94,27 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: Poppins
+      fonts: 
+        - asset: assets/fonts/PoppinsMedium.ttf
+          weight: 500
+    - family: Outfit
+      fonts: 
+        - asset: assets/fonts/OutfitLight.ttf
+          weight: 300
+        - asset: assets/fonts/OutfitMedium.ttf
+          weight: 500
+        - asset: assets/fonts/OutfitRegular.ttf
+          weight: 400
+        - asset: assets/fonts/OutfitSemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/OutfitBold.ttf
+          weight: 700
+    - family: Inter
+      fonts: 
+        - asset: assets/fonts/InterRegular.ttf
+          weight: 400
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

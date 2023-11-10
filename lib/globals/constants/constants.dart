@@ -1,9 +1,17 @@
 class CONSTANTS {
-  get onboarded {
+  get getOnBoardedKey {
     return 'onboarded';
   }
 
-  get easyString {
-    return ['Easy, anywhere, ', 'in the palm of ', 'your hands.'];
+  get getAuthKey {
+    return 'isLogged';
+  }
+
+  get selecgtedLanguageKey {
+    return 'language';
+  }
+
+  get getSelectLanguageTitle {
+    return ['Language', 'Preferred Language'];
   }
 }

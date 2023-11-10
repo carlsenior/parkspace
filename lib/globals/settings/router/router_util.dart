@@ -13,7 +13,7 @@ extension AppPageExtension on APP_PAGE {
       case APP_PAGE.auth:
         return '/auth';
       case APP_PAGE.home:
-        return '/home';
+        return '/';
       default:
         return '/';
     }
@@ -22,13 +22,13 @@ extension AppPageExtension on APP_PAGE {
   String get routeName {
     switch (this) {
       case APP_PAGE.onboard:
-        return 'ONBOARD';
+        return 'onboard';
       case APP_PAGE.auth:
-        return 'Auth';
+        return 'auth';
       case APP_PAGE.home:
-        return 'Home';
+        return '/';
       default:
-        return 'HOME';
+        return '/';
     }
   }
 

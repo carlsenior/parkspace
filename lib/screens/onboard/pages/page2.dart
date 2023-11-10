@@ -1,177 +1,232 @@
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'package:park_space/components/filled_image.dart';
-import 'package:park_space/components/svg_render.dart';
-import 'package:park_space/globals/constants/constants.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:park_space/localization/app_localization.dart';
+import 'package:park_space/widgets/custom_image_view.dart';
+
+import '../../../globals/theme/app_decoration.dart';
+import '../../../globals/theme/custom_text_style.dart';
+import '../../../globals/theme/theme_helper.dart';
+import '../../../globals/utils/image_constant.dart';
 
 class Page2 extends StatelessWidget {
   const Page2({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-    double strokeRectWidth = screenWidth * 0.85;
-    double strokeRectHeight = screenHeight * 0.55;
-    double strokeWidthGap = (screenWidth - strokeRectWidth + 10) / 4.0;
-    double strokeHeightGap = strokeWidthGap + 2.0;
-
-    double initStrokeRectTop =
-        (screenHeight - strokeRectHeight - 4 * strokeHeightGap) / 2.0 +
-            5 * strokeHeightGap;
-
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomLeft,
-              colors: [HexColor('#009ECD'), HexColor('#7DCED1')])),
-      child: Stack(
-        children: [
-          const Positioned(
-              left: 33,
-              top: 33,
-              width: 127,
-              height: 178,
-              child: SvgRender(
-                  svgURL:
-                      'assets/images/onboard/page2/Group_238585_onboard_page2.svg')),
-          const Positioned(
-              right: -80,
-              top: -20,
-              width: 358,
-              height: 372,
-              child: SvgRender(
-                  svgURL:
-                      'assets/images/onboard/page2/big_logo_4_onboard_page2.svg')),
-          const Positioned(
-              left: -20,
-              bottom: 0,
-              width: 220,
-              height: 220,
-              child:
-                  SvgRender(svgURL: 'assets/images/onboard/page2/logo_1.svg')),
-          Positioned(
-            right: -2,
-            top: initStrokeRectTop,
-            width: strokeRectWidth,
-            height: strokeRectHeight,
-            child: CustomPaint(
-              size: Size(strokeRectWidth, strokeRectHeight),
-              painter: StrokeRectangle(strokeColor: Colors.white),
+    return SafeArea(
+      child: Scaffold(
+        extendBody: true,
+        extendBodyBehindAppBar: true,
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: const Alignment(0, 0),
+              end: const Alignment(0.97, 1),
+              colors: [
+                appTheme.cyan60001,
+                appTheme.teal200,
+              ],
             ),
           ),
-          Positioned(
-              right: -2 + strokeWidthGap,
-              top: initStrokeRectTop - strokeHeightGap,
-              width: strokeRectWidth,
-              height: strokeRectHeight,
-              child: CustomPaint(
-                size: Size(strokeRectWidth, strokeRectHeight),
-                painter: StrokeRectangle(strokeColor: Colors.white),
-              )),
-          Positioned(
-              right: -2 + strokeWidthGap * 2,
-              top: initStrokeRectTop - strokeHeightGap * 2,
-              width: strokeRectWidth,
-              height: strokeRectHeight,
-              child: CustomPaint(
-                size: Size(strokeRectWidth, strokeRectHeight),
-                painter: StrokeRectangle(strokeColor: Colors.white),
-              )),
-          Positioned(
-              right: -4 + strokeWidthGap * 3,
-              top: initStrokeRectTop - strokeHeightGap * 3,
-              width: strokeRectWidth,
-              height: strokeRectHeight,
-              child: CustomPaint(
-                size: Size(strokeRectWidth, strokeRectHeight),
-                painter: StrokeRectangle(strokeColor: Colors.white),
-              )),
-          Positioned(
-              right: -4 + strokeWidthGap * 4,
-              top: initStrokeRectTop - strokeHeightGap * 4,
-              width: strokeRectWidth,
-              height: strokeRectHeight,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: const FilledImage(
-                    imageURL:
-                        'assets/images/onboard/page2/staff_onboard_page2.jpg'),
-              )),
-          Positioned(
-              right: -8,
-              top: initStrokeRectTop -
-                  strokeHeightGap * 4 +
-                  strokeRectHeight -
-                  96 -
-                  8,
-              width: strokeRectWidth - 16,
-              height: 96,
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Container(
-                    color: Colors.white,
-                    padding: const EdgeInsets.only(left: 30.0, right: 30.0),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: RichText(
-                              text: TextSpan(
-                                  text: CONSTANTS().easyString[0],
-                                  style: Theme.of(context).textTheme.titleLarge,
-                                  children: <TextSpan>[
-                                TextSpan(
-                                    text: CONSTANTS().easyString[1],
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleMedium),
-                                TextSpan(
-                                    text: CONSTANTS().easyString[2],
-                                    style:
-                                        Theme.of(context).textTheme.titleLarge)
-                              ])),
+          child: SizedBox(
+            width: double.maxFinite,
+            child: SizedBox(
+              height: double.infinity,
+              width: double.maxFinite,
+              child: Stack(
+                alignment: Alignment.topLeft,
+                children: [
+                  _buildLogo1SVG(context),
+                  _buildLogo4SVG(context),
+                  _buildLogo5SVG(context),
+                  Positioned(
+                    right: -3.w,
+                    top: 228.h,
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: Container(
+                        height: 438.h,
+                        width: 335.w,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            8.h,
+                          ),
+                          border: Border.all(
+                            color: appTheme.whiteA700,
+                            width: 1.h,
+                          ),
                         ),
-                        const SizedBox(
-                          width: 32.0,
-                        ),
-                        const LimitedBox(
-                            maxWidth: 42,
-                            child: SvgRender(
-                                svgURL:
-                                    'assets/images/onboard/page2/logo_3.svg'))
-                      ],
+                      ),
                     ),
-                  )))
-        ],
+                  ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Container(
+                      height: 438.h,
+                      width: 335.w,
+                      margin: EdgeInsets.only(
+                        right: 13.w,
+                        bottom: 173.h,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          8.h,
+                        ),
+                        border: Border.all(
+                          color: appTheme.whiteA700,
+                          width: 1.h,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      height: 438.h,
+                      width: 335.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          8.h,
+                        ),
+                        border: Border.all(
+                          color: appTheme.whiteA700,
+                          width: 1.h,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Container(
+                      height: 438.h,
+                      width: 335.w,
+                      margin: EdgeInsets.only(
+                        left: 12.w,
+                        top: 172.h,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          8.h,
+                        ),
+                        border: Border.all(
+                          color: appTheme.whiteA700,
+                          width: 1.h,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: -4.w,
+                    top: 153.h,
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: SizedBox(
+                        height: 438.h,
+                        width: 335.w,
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.h),
+                            child: CustomImageView(
+                              imagePath: ImageConstant.imgOnboardPage2Staff,
+                              fit: BoxFit.cover,
+                            )),
+                      ),
+                    ),
+                  ),
+                  _buildEasyAnywhere(context),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
-}
 
-class StrokeRectangle extends CustomPainter {
-  StrokeRectangle({required this.strokeColor}) {
-    _paint
-      ..color = strokeColor
-      ..strokeWidth = 1
-      ..style = PaintingStyle.stroke;
+  /// Section Widget
+  Widget _buildEasyAnywhere(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomRight,
+      child: Container(
+        margin: EdgeInsets.only(
+          left: 67.w,
+          bottom: 246.h,
+        ),
+        padding: EdgeInsets.symmetric(
+          horizontal: 22.w,
+          vertical: 14.h,
+        ),
+        decoration: AppDecoration.fillOnPrimaryContainer.copyWith(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(8.h),
+                topLeft: Radius.circular(8.h))),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 180.w,
+              margin: EdgeInsets.only(
+                left: 5.w,
+              ),
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "lbl_easy_anywhere".tr,
+                      style: CustomTextStyles.titleMediumLightblue70001,
+                    ),
+                    TextSpan(
+                      text: "msg_in_the_palm_of_your".tr,
+                      style: CustomTextStyles.bodyLargeLightblue70001,
+                    ),
+                    TextSpan(
+                      text: "msg_your_hand".tr,
+                      style: CustomTextStyles.titleMediumLightblue70001,
+                    ),
+                  ],
+                ),
+                textAlign: TextAlign.left,
+              ),
+            ),
+            const Spacer(),
+            CustomImageView(
+              imagePath: ImageConstant.imgPage2Logo3,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
-  final Paint _paint = Paint();
-  final Color strokeColor;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    canvas.drawRRect(
-        RRect.fromRectAndRadius(Rect.fromLTWH(0, 0, size.width, size.height),
-            const Radius.circular(8.0)),
-        _paint);
+  Widget _buildLogo1SVG(BuildContext context) {
+    return Positioned(
+      bottom: 0,
+      left: -18.w,
+      width: 240.w,
+      height: 240.h,
+      child: CustomImageView(imagePath: ImageConstant.imgPage2Logo1),
+    );
   }
 
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
+  Widget _buildLogo4SVG(BuildContext context) {
+    return Positioned(
+        left: -30.w,
+        top: -20.h,
+        width: 220.w,
+        height: 180.h,
+        child: CustomImageView(
+          imagePath: ImageConstant.imgPage2LineGroup,
+        ));
+  }
+
+  Widget _buildLogo5SVG(BuildContext context) {
+    return Positioned(
+        right: -43.w,
+        top: 40.h,
+        width: 220.w,
+        height: 180.h,
+        child: CustomImageView(
+          imagePath: ImageConstant.imgPage2Logo4,
+        ));
   }
 }

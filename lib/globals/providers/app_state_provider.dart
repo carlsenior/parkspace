@@ -4,11 +4,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../constants/constants.dart';
 
 class AppStateProvider extends ChangeNotifier {
-  AppStateProvider() : super();
+  AppStateProvider({required this.prefs}) : super();
 
-  void hasOnBoard() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(CONSTANTS().onboarded, true);
+  final SharedPreferences prefs;
+
+  void hasOnBoard(String language) {
+    prefs.setBool(CONSTANTS().getOnBoardedKey, true);
+    prefs.setString(CONSTANTS().selecgtedLanguageKey, language);
     notifyListeners();
+  }
+
+  get getPrefs {
+    return prefs;
   }
 }
