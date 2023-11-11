@@ -32,6 +32,7 @@ final Map<String, String> enUs = {
   "lbl_client_name": "Client Name",
   "lbl_contact_us": "Contact us ",
   "lbl_log_out": "Log Out",
+  "lbl_log_in": "Log In",
   "lbl_my_account": "My Account",
   "lbl_my_profile": "My Profile",
   "lbl_renter": "Renter",
@@ -73,7 +74,8 @@ final Map<String, String> enUs = {
 
   // Forgot my password Screen
   "lbl_new_passowrd": "New Passowrd",
-  "lbl_new_password": "New password",
+  "lbl_sign_up": "Sign Up",
+  "lbl_forgot_my_password": "Forgot my password",
   "msg_confirm_new_passowrd": "Confirm New Passowrd",
   "msg_enter_new_password": "Enter New Password",
   "msg_log_in_with_a_different": "Log In with a different account",

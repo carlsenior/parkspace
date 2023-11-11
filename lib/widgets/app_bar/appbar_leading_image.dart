@@ -5,12 +5,14 @@ import '../custom_image_view.dart';
 
 // ignore: must_be_immutable
 class AppbarLeadingImage extends StatelessWidget {
-  AppbarLeadingImage({
-    Key? key,
-    this.imagePath,
-    this.margin,
-    this.onTap,
-  }) : super(
+  AppbarLeadingImage(
+      {Key? key,
+      this.imagePath,
+      this.margin,
+      this.onTap,
+      this.width,
+      this.height})
+      : super(
           key: key,
         );
 
@@ -19,6 +21,10 @@ class AppbarLeadingImage extends StatelessWidget {
   EdgeInsetsGeometry? margin;
 
   Function? onTap;
+
+  double? width;
+
+  double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +36,8 @@ class AppbarLeadingImage extends StatelessWidget {
         padding: margin ?? EdgeInsets.zero,
         child: CustomImageView(
           imagePath: imagePath,
-          height: 46.h,
-          width: 46.w,
+          height: height ?? 46.h,
+          width: width ?? 46.w,
           fit: BoxFit.contain,
         ),
       ),

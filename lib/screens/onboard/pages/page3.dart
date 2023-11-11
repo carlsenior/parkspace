@@ -104,7 +104,7 @@ class _Page3State extends State<Page3> {
                                         if (!isAuthenticated) {
                                           Navigator.of(context)
                                               .pushReplacementNamed(
-                                                  AppRoutes.onAuth);
+                                                  AppRoutes.onLogin);
                                         } else {
                                           Navigator.of(context)
                                               .pushReplacementNamed(
@@ -134,7 +134,9 @@ class _Page3State extends State<Page3> {
       height: 287.h,
       child: Stack(alignment: Alignment.center, children: [
         BlurWidget(
-            blurColor: Color.fromARGB((0.6 * 255).round(), 0, 158, 205),
+            blur: 2.5,
+            width: double.infinity,
+            blurColor: appTheme.cyan60001.withOpacity(0.6),
             imageURL: ImageConstant.imgStaffJPGURLPage3),
         Container(
           transform: Matrix4.translationValues(-30.w, 12.h, 0),

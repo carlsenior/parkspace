@@ -15,6 +15,7 @@ void main() {
     // Build our app and trigger a frame.
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await tester.pumpWidget(App(
+      initRoute: '/',
       prefs: prefs,
     ));
 

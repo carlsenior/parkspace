@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:park_space/screens/auth/auth_screen.dart';
+import 'package:park_space/screens/auth/register_screen.dart';
+import 'package:park_space/screens/auth/signin_screen.dart';
 import 'package:park_space/screens/home/home_screen.dart';
 import 'package:park_space/screens/onboard/onboard_screen.dart';
 
@@ -198,12 +199,14 @@ class AppRoutes {
 
   static const String appHome = '/';
   static const String onBoard = '/onboard';
-  static const String onAuth = '/auth';
+  static const String onRegister = '/auth/register';
+  static const String onLogin = '/auth/login';
 
   static Map<String, WidgetBuilder> routes = {
     appHome: (context) => const HomeScreen(),
     onBoard: (context) => const OnBoardScreen(),
-    onAuth: (context) => const AuthScreen(),
+    onRegister: (context) => const RegisterScreen(),
+    onLogin: (context) => const SigninScreen(),
 
     // iconsScreen: (context) => IconsScreen(),
     // calendarScreen: (context) => CalendarScreen(),

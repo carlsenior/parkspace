@@ -5,10 +5,12 @@ class ImageConstant {
 
   // images
 
+  // auth screen
+  /// login
+  static String imgGroup128 = '$imagePath/auth/img_group_128.svg';
+
   // onboard
-
   /// page - 3
-
   static String imgStaffJPGURLPage3 =
       '$imagePath/onboard/page3/staff_onboard_page3.jpg';
 
@@ -17,33 +19,42 @@ class ImageConstant {
       '$imagePath/onboard/page2/img_vector_cyan_400.svg';
 
   static String imgPage2Logo3 = '$imagePath/onboard/page2/logo_3.svg';
+
   static String imgPage2Logo1 = '$imagePath/onboard/page2/logo_1.svg';
+
   static String imgPage2Logo4 =
       '$imagePath/onboard/page2/big_logo_4_onboard_page2.svg';
+
   static String imgPage2LineGroup =
       '$imagePath/onboard/page2/Group_238585_onboard_page2.svg';
-
-  static String imgVectorLightBlue70001 =
-      '$imagePath/onboard/page2/img_vector_light_blue_700_01.svg';
-
-  static String imgOnboaringOne = '$imagePath/img_onboaring_one.png';
 
   static String imgOnboardPage2Staff =
       '$imagePath/onboard/page2/staff_onboard_page2.jpg';
 
-  // custom
+  static String imgVectorLightBlue70001 =
+      '$imagePath/onboard/page2/img_vector_light_blue_700_01.svg';
+
+  /// page1
+  static String imgOnboaringOne = '$imagePath/img_onboaring_one.png';
+
+  // Icons
+  static String iconFaceBook = '$imagePath/icons/facebook.svg';
+  static String iconArrowLeft = '$imagePath/icons/icon_arrow_left.svg';
+  static String iconGoogle = '$imagePath/icons/google.svg';
+
+  // custom widget
   static String imgIconsSearchOnprimarycontainer =
-      '$imagePath/img_icons_search_onprimarycontainer.svg';
+      '$imagePath/widgets/img_icons_search_onprimarycontainer.svg';
 
-  static String imgIconsSearch = '$imagePath/img_icons_search.svg';
+  static String imgIconsSearch = '$imagePath/widgets/img_icons_search.svg';
 
-  static String imgGroup50 = '$imagePath/img_group_50.svg';
+  static String imgGroup50 = '$imagePath/widgets/img_group_50.svg';
 
-  static String imgNavMessages = '$imagePath/img_nav_messages.svg';
+  static String imgNavMessages = '$imagePath/widgets/img_nav_messages.svg';
 
   static String imgUserOnprimarycontainer =
-      '$imagePath/img_user_onprimarycontainer.svg';
+      '$imagePath/widgets/img_user_onprimarycontainer.svg';
 
   static String imgIconsHeartOnprimarycontainer =
-      '$imagePath/img_icons_heart_onprimarycontainer.svg';
+      '$imagePath/widgets/img_icons_heart_onprimarycontainer.svg';
 }

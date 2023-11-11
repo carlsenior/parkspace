@@ -49,6 +49,7 @@ dependencies:
   table_calendar: ^3.0.6
   flutter_rating_bar: ^4.0.0
   cached_network_image: ^3.2.1
+  intl_phone_field: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -77,6 +78,9 @@ flutter:
     - assets/
     - assets/images/
     - assets/images/tmp/
+    - assets/images/tmp/auth/
+    - assets/images/tmp/icons/
+    - assets/images/tmp/widgets/
     - assets/images/tmp/onboard/
     - assets/images/tmp/onboard/page1/
     - assets/images/tmp/onboard/page2/

@@ -175,6 +175,9 @@ class ColorSchemes {
 
 /// Class containing custom colors for a primary theme.
 class PrimaryColors {
+  // White
+  Color get white900 => const Color(0xFFF9F9F9);
+
   // Black
   Color get black900 => const Color(0XFF000000);
 

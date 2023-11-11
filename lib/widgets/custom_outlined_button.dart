@@ -5,7 +5,7 @@ import '../globals/theme/custom_text_style.dart';
 import 'base_button.dart';
 
 class CustomOutlinedButton extends BaseButton {
-  CustomOutlinedButton({
+  const CustomOutlinedButton({
     super.key,
     this.decoration,
     this.leftIcon,

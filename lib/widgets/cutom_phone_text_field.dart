@@ -1,21 +1,24 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:intl_phone_field/phone_number.dart';
 
 import '../globals/theme/custom_text_style.dart';
 import '../globals/theme/theme_helper.dart';
 
-class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({
+class CutomPhoneTextField extends StatelessWidget {
+  const CutomPhoneTextField({
     Key? key,
     this.alignment,
     this.width,
     this.controller,
     this.focusNode,
-    this.autofocus = true,
+    this.autofocus,
     this.textStyle,
-    this.obscureText = false,
-    this.textInputAction = TextInputAction.next,
-    this.textInputType = TextInputType.text,
+    this.obscureText,
+    this.textInputAction,
+    this.textInputType,
     this.maxLines,
     this.hintText,
     this.hintStyle,
@@ -26,11 +29,9 @@ class CustomTextFormField extends StatelessWidget {
     this.contentPadding,
     this.borderDecoration,
     this.fillColor,
-    this.filled = true,
+    this.filled,
     this.validator,
-  }) : super(
-          key: key,
-        );
+  }) : super(key: key);
 
   final Alignment? alignment;
 
@@ -72,33 +73,34 @@ class CustomTextFormField extends StatelessWidget {
 
   final bool? filled;
 
-  final FormFieldValidator<String>? validator;
+  final FutureOr<String?> Function(PhoneNumber?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return alignment != null
         ? Align(
             alignment: alignment ?? Alignment.center,
-            child: textFormFieldWidget,
+            child: phoneField,
           )
-        : textFormFieldWidget;
+        : phoneField;
   }
 
-  Widget get textFormFieldWidget => SizedBox(
+  Widget get phoneField => SizedBox(
         width: width ?? double.maxFinite,
-        child: TextFormField(
+        child: IntlPhoneField(
           controller: controller,
           focusNode: focusNode ?? FocusNode(),
           autofocus: autofocus!,
           style: textStyle ?? theme.textTheme.bodyLarge,
           obscureText: obscureText!,
           textInputAction: textInputAction,
-          keyboardType: textInputType,
-          maxLines: maxLines ?? 1,
+          keyboardType: TextInputType.phone,
           decoration: decoration,
-          validator: validator,
+          // TODO
+          // validator: validator ?? () {},
         ),
       );
+
   InputDecoration get decoration => InputDecoration(
         hintText: hintText ?? "",
         hintStyle: hintStyle ?? CustomTextStyles.bodyLargeInterGray500,
@@ -118,13 +120,6 @@ class CustomTextFormField extends StatelessWidget {
                 width: 1,
               ),
             ),
-        // OutlineInputBorder(
-        //   borderRadius: BorderRadius.circular(8.h),
-        //   borderSide: BorderSide(
-        //     color: appTheme.blueGray50,
-        //     width: 1,
-        //   ),
-        // ),
         enabledBorder: borderDecoration ??
             UnderlineInputBorder(
               // borderRadius: BorderRadius.circular(8.h),
@@ -133,13 +128,6 @@ class CustomTextFormField extends StatelessWidget {
                 width: 1,
               ),
             ),
-        // OutlineInputBorder(
-        //   borderRadius: BorderRadius.circular(8.h),
-        //   borderSide: BorderSide(
-        //     color: appTheme.blueGray50,
-        //     width: 1,
-        //   ),
-        // ),
         focusedBorder: borderDecoration ??
             UnderlineInputBorder(
               // borderRadius: BorderRadius.circular(8.h),
@@ -148,33 +136,5 @@ class CustomTextFormField extends StatelessWidget {
                 width: 1,
               ),
             ),
-        // OutlineInputBorder(
-        //   borderRadius: BorderRadius.circular(8.h),
-        //   borderSide: BorderSide(
-        //     color: appTheme.gray500,
-        //     width: 2,
-        //   ),
-        // ),
-      );
-}
-
-/// Extension on [CustomTextFormField] to facilitate inclusion of all types of border style etc
-extension TextFormFieldStyleHelper on CustomTextFormField {
-  static OutlineInputBorder get fillOnPrimaryContainer => OutlineInputBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(
-            30.h,
-          ),
-          topRight: Radius.circular(
-            30.h,
-          ),
-          bottomLeft: Radius.circular(
-            8.h,
-          ),
-          bottomRight: Radius.circular(
-            8.h,
-          ),
-        ),
-        borderSide: BorderSide.none,
       );
 }
